@@ -6,7 +6,7 @@ client = MongoClient(config.CONN)
 db = client['Travelers']  
 travelers_collection = db['traveler']  
 
-def get_journey():
+def get_all_journey():
     return {
         'name': 'alice',
         'email': 'alice@outlook.com'

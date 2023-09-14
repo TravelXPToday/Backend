@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from routes import bp as routes_bp
-import re
 from datetime import date
 import Utils.config as config
 from flask import Flask, render_template, request

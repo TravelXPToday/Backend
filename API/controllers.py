@@ -2,7 +2,7 @@ from pymongo import MongoClient
 import Utils.config as config
 
 # Initialize MongoDB client
-client = MongoClient(config.CONN)
+client = MongoClient(config.CONN, tlsAllowInvalidCertificates=True)
 db = client['Travelers']  
 travelers_collection = db['traveler']  
 

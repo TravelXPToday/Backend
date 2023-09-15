@@ -3,7 +3,7 @@ from controllers import get_all_journey, get_all_travelers
 
 bp = Blueprint('routes', __name__)
 
-@bp.route('/journey', methods=['GET'])
+@bp.route('/journey/all', methods=['GET'])
 def journey():
     return jsonify(get_all_journey())
 

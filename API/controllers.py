@@ -1,16 +1,34 @@
-from pymongo import MongoClient
-import Utils.config as config
-
-# Initialize MongoDB client
-client = MongoClient(config.CONN, tlsAllowInvalidCertificates=True)
-db = client['Travelers']  
-travelers_collection = db['traveler']  
-journey_collection = db['Journeys']
-
-def get_all_journey():
-    journeys = list(journey_collection.find({}, {'_id': 0}))  
-    return journeys
+from traveler import Traveler
+from journey import Journey
 
 def get_all_travelers():
-    travelers = list(travelers_collection.find({}, {'_id': 0}))  
-    return travelers
+    traveler = Traveler()
+    return traveler.read()
+
+def create_traveler(data):
+    traveler = Traveler()
+    return traveler.create(data)
+
+def update_traveler(criteria, updates):
+    traveler = Traveler()
+    return traveler.update(criteria, updates)
+
+def delete_traveler(criteria):
+    traveler = Traveler()
+    return traveler.delete(criteria)
+
+def get_all_journeys():
+    journey = Journey()
+    return journey.read()
+
+def create_journey(data):
+    journey = Journey()
+    return journey.create(data)
+
+def update_journey(criteria, updates):
+    journey = Journey()
+    return journey.update(criteria, updates)
+
+def delete_journey(criteria):
+    journey = Journey()
+    return journey.delete(criteria)

@@ -4,6 +4,7 @@
 
 ### Flask
 Why whe chose Flask:
+
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/) is a lightweight WSGI web application framework. It is designed to make getting started quick and easy, with the ability to scale up to complex applications.
 - We might want to integrate AI what is easier with Flask because it runs on Python.
 

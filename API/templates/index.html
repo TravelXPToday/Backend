@@ -70,7 +70,26 @@
     Journey --|> CRUDInterface
     Journey --|> DataAccess
 </div>
+<p><img src="https://flask.palletsprojects.com/en/2.3.x/_images/flask-horizontal.png" alt="Italian Trulli"></p>
+<h1 id="back-end">Back-end</h1>
+<h3 id="flask">Flask</h3>
+<p>Why whe chose Flask:</p>
+<ul>
+<li><a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> is a lightweight WSGI web application framework. It is designed to make getting started quick and easy, with the ability to scale up to complex applications.</li>
+<li>We might want to integrate AI what is easier with Flask because it runs on Python.</li>
+</ul>
+<h2 id="file-structure-">File Structure:</h2>
+<h4 id="api-py">api.py</h4>
 
+<p>Here we set up the server and register the routes.</p>
+<h4 id="controller-py">controller.py</h4>
+
+<p>Here we set up the connection to the MongoDB database. We also define the functions to get all the data from the database.</p>
+<h4 id="routes-py">routes.py</h4>
+
+<p>Here we define the routes for the API. We use the functions from the controller to get the data from the database and return it as JSON.</p>
+<h2 id="security">Security</h2>
+<p>We made a config.py file that has the connection string to the database. This file is in the .gitignore so it is not visible on GitHub.</p>
 <script>
     mermaid.initialize({startOnLoad:true});
 </script>

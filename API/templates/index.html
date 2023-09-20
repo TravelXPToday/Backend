@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mermaid Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head>
+<body>
+
+<div class="mermaid">
+
+    classDiagram
+
+    class api {
+        +Flask App Initialization
+        +CORS Configuration
+    }
+
+    class routes {
+        +http://127.0.0.1:5000/journey/all (GET)
+        +http://127.0.0.1:5000/journey (POST)
+        +http://127.0.0.1:5000/journey (PUT)
+        +http://127.0.0.1:5000/journey (DELETE)
+        +http://127.0.0.1:5000/traveler/all (GET)
+        +http://127.0.0.1:5000/traveler (POST)
+        +http://127.0.0.1:5000/traveler (PUT)
+        +http://127.0.0.1:5000/traveler (DELETE)
+    }
+
+    class controllers {
+        +get_all_travelers()
+        +create_traveler(data)
+        +update_traveler(criteria, updates)
+        +delete_traveler(criteria)
+        +get_all_journeys()
+        +create_journey(data)
+        +update_journey(criteria, updates)
+        +delete_journey(criteria)
+    }
+
+    class CRUDInterface {
+        +create(data)
+        +read(criteria)
+        +update(criteria, updates)
+        +delete(criteria)
+    }
+
+    class DataAccess {
+        +create(data)
+        +read(criteria=)
+        +update(criteria, updates)
+        +delete(criteria)
+    }
+
+    class Traveler {
+        +__init__()
+    }
+
+    class Journey {
+        +__init__()
+    }
+
+    api --> routes
+    routes --> controllers
+    controllers --> Traveler
+    controllers --> Journey
+    Traveler --|> CRUDInterface
+    Traveler --|> DataAccess
+    Journey --|> CRUDInterface
+    Journey --|> DataAccess
+</div>
+
+<script>
+    mermaid.initialize({startOnLoad:true});
+</script>
+
+</body>
+</html>

@@ -32,3 +32,7 @@ def update_journey(criteria, updates):
 def delete_journey(criteria):
     journey = Journey()
     return journey.delete(criteria)
+
+def read_journey_by_id(id):
+    journey = Journey()
+    return journey.readById(id)

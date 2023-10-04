@@ -1,3 +1,4 @@
+from bson import ObjectId
 from pymongo import MongoClient
 import Utils.config as config
 
@@ -22,3 +23,7 @@ class DataAccess:
 
     def delete(self, criteria):
         return self.collection.delete_many(criteria)
+    
+    def readById(self, id):
+        data = self.collection.find_one({'_id': id})
+        return data

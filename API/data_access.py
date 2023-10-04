@@ -11,7 +11,11 @@ class DataAccess:
         return self.collection.insert_one(data)
 
     def read(self, criteria={}):
-        return list(self.collection.find(criteria, {'_id': 0}))
+        data = list(self.collection.find(criteria))
+        for item in data:
+            item['_id'] = str(item['_id'])  
+        return data
+
 
     def update(self, criteria, updates):
         return self.collection.update_many(criteria, {'$set': updates})

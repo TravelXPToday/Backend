@@ -25,5 +25,7 @@ class DataAccess:
         return self.collection.delete_many(criteria)
     
     def readById(self, id):
-        data = self.collection.find_one({'_id': id})
+        object_id = ObjectId(id)
+        data = self.collection.find_one({'_id': object_id})
+        data['_id'] = str(data['_id'])
         return data

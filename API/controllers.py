@@ -36,3 +36,5 @@ def delete_journey(criteria):
 def read_journey_by_id(id):
     journey = Journey()
     return journey.readById(id)
+
+# blalbalbal

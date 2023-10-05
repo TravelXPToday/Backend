@@ -4,7 +4,8 @@ from controllers import (
     get_all_journeys, get_all_travelers,
     create_journey, create_traveler,
     update_journey, update_traveler,
-    delete_journey, delete_traveler
+    delete_journey, delete_traveler,
+    read_journey_by_id,
 )
 
 bp = Blueprint('routes', __name__)
@@ -16,6 +17,10 @@ def mermaid_diagram():
 @bp.route('/journey/all', methods=['GET'])
 def journey():
     return jsonify(get_all_journeys())
+
+@bp.route('/journey/<id>', methods=['GET'])
+def journey_by_id(id):
+    return jsonify(read_journey_by_id(id))
 
 @bp.route('/journey', methods=['POST'])
 def add_journey():

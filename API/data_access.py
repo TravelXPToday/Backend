@@ -1,3 +1,4 @@
+from bson import ObjectId
 from pymongo import MongoClient
 import Utils.config as config
 
@@ -11,10 +12,20 @@ class DataAccess:
         return self.collection.insert_one(data)
 
     def read(self, criteria={}):
-        return list(self.collection.find(criteria, {'_id': 0}))
+        data = list(self.collection.find(criteria))
+        for item in data:
+            item['_id'] = str(item['_id'])  
+        return data
+
 
     def update(self, criteria, updates):
         return self.collection.update_many(criteria, {'$set': updates})
 
     def delete(self, criteria):
         return self.collection.delete_many(criteria)
+    
+    def readById(self, id):
+        object_id = ObjectId(id)
+        data = self.collection.find_one({'_id': object_id})
+        data['_id'] = str(data['_id'])
+        return data

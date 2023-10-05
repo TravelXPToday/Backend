@@ -16,3 +16,7 @@ class CRUDInterface(ABC):
     @abstractmethod
     def delete(self, criteria):
         pass
+
+    @abstractmethod
+    def readById(self, id):
+        pass

@@ -12,7 +12,7 @@ Why whe chose Flask:
 We made a config.py file that has the connection string to the database. This file is in the .gitignore so it is not visible on GitHub.
 We added sonar cloud to the project to check for vulnerabilities and bad code.  
 # Tests
-We started making [[PRO Unit Test|Unit Tests ]]  they can be found here : [[TravelXPToday Back-end Testing]].
+We started making [Unit Tests]  they can be found here : [[TravelXPToday Back-end Testing]].
 
 ---
 # File Structure:

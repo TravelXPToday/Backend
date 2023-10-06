@@ -62,5 +62,5 @@ jobs:
       run: npm install -g newman
 
 
-    - name: Run API tests with newman
+    #- name: Run API tests with newman
      # run: newman run API/tests/Travelxptoday.postman_collection.json

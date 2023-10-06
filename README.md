@@ -14,6 +14,19 @@ We added sonar cloud to the project to check for vulnerabilities and bad code.
 # Tests
 We started making [Unit Tests]  they can be found here : [[TravelXPToday Back-end Testing]].
 
+### how to start the program
+To run the React app, run the following commands in the terminal:
+```bash
+cd TravelXPToday
+npm install
+npm start
+```
+To run the Flask app, run the following commands in the terminal:
+```bash
+cd API
+pip install -r requirements.txt
+python app.py
+```
 ---
 # File Structure:
 ```mermaid

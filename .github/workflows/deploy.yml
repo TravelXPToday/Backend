@@ -30,7 +30,8 @@ jobs:
       if: github.event_name == 'pull_request'
       run: |
         PR_TITLE=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.number }} | jq -r .title)
-        echo "PR_TITLE=$(echo "$PR_TITLE" | sed 's/[^a-zA-Z0-9-]/-/g')" >> $GITHUB_ENV  # Make the PR title Docker tag friendly
+        PR_TITLE=$(echo "$PR_TITLE PR:@${{ github.event.number }}" | sed 's/[^a-zA-Z0-9-]/-/g')  # Make the PR title Docker tag friendly
+        echo "PR_TITLE=$PR_TITLE" >> $GITHUB_ENV
 
     - name: Login to Docker Hub
       uses: docker/login-action@v1 

@@ -35,7 +35,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest pytest-cov radon mypy  # Added radon and mypy
+        pip install flake8 pytest pytest-cov mypy  # Added radon and mypy
         pip install -r API/requirements.txt
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
@@ -52,10 +52,6 @@ jobs:
       run: |
         coverage report
         coverage xml
-
-
-    - name: Compute code metrics with radon
-      run: radon cc . -a -nc
 
 
     - name: Type checking with mypy

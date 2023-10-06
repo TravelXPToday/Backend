@@ -1,31 +1,52 @@
 name: Build and Push to Docker Hub
 
-on:
+on: 
   push:
     branches:
       - main
-      
+      - DEV
+  pull_request:
+    branches: 
+      - main
+      - DEV
+
+env:
+  IMAGE_NAME: travelxptoday
+  DOCKERFILE_PATH: API/Dockerfile
+
+permissions:
+  contents: read
 
 jobs:
   build-and-push:
+    name: Build and Push Docker Image to Docker Hub
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out code
-      uses: actions/checkout@v3
+    - name: Checkout Repository
+      uses: actions/checkout@v3   
+
+    - name: Get PR Title
+      if: github.event_name == 'pull_request'
+      run: |
+        PR_TITLE=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.number }} | jq -r .title)
+        PR_TITLE=$(echo "$PR_TITLE PR:@${{ github.event.number }}" | sed 's/[^a-zA-Z0-9-]/-/g')  # Make the PR title Docker tag friendly
+        echo "PR_TITLE=$PR_TITLE" >> $GITHUB_ENV
 
     - name: Login to Docker Hub
-      uses: docker/login-action@v1
+      uses: docker/login-action@v1 
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v2
+    - name: Build and Push Docker Image
+      id: docker_build
+      uses: docker/build-push-action@v2 
       with:
         context: .
-        file: Dockerfile
+        file: ${{ env.DOCKERFILE_PATH }}
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/travelxptoday:latest 
-
-
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.event_name == 'pull_request' && env.PR_TITLE || github.ref_name }}
+      
+    - name: Print Image SHA
+      run: echo "Docker Image SHA - ${{ steps.docker_build.outputs.digest }}"

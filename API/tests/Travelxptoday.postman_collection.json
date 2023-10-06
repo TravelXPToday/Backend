@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "4dee8186-f010-4683-806c-8605fe52afe5",
+		"name": "Travelxptoday",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13494878"
+	},
+	"item": [
+		{
+			"name": "http://127.0.0.1:5000/traveler",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Extra 2\",\r\n    \"start_location\": \"efteling\",\r\n    \"Destination\": \"Benelux\",\r\n    \"start_time\": \"2023-09-15T07:00:00Z\",\r\n    \"end_time\": \"2023-09-15T19:00:00Z\",\r\n    \"mode_of_transport\": \"train\",\r\n    \"duration\": \"2 weeks\",\r\n    \"travelers\": [\r\n        {\r\n        \"name\": \"Art\",\r\n        \"email\": \"test@gmail\"\r\n        },\r\n        {\r\n        \"name\": \"Jelle\",\r\n        \"email\": \"Test@gmail.com\"\r\n        }\r\n    ],\r\n    \"status\": \"planned\",\r\n    \"description\": \"getting to know our surroundings\",\r\n    \"dailyMoments\": [\r\n        {\r\n        \"date\": \"2023-10-27\",\r\n        \"description\": \"Started our journey, feeling excited!\",\r\n        \"location\": \"brussel\"\r\n        },\r\n        {\r\n        \"date\": \"2023-10-28\",\r\n        \"description\": \"Visited the beautiful Grand Canyon.\",\r\n        \"location\": \"luxenburg stad\"\r\n        },\r\n        {\r\n        \"date\": \"2023-10-29\",\r\n        \"description\": \"Enjoyed a delicious meal at a local restaurant.\",\r\n        \"location\": \"groningen\"\r\n        }\r\n\r\n    ],\r\n    \"image_url\": \"https://www.zininfrankrijk.nl/wp-content/uploads/2019/03/Parijs-%C3%8Ele-de-France-shutterstock_710380270-660x330.jpg\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/journey/all",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"journey",
+						"all"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

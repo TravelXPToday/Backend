@@ -5,7 +5,13 @@ on:
     branches:
       - main
       - DEV
+  pull_request:
+    branches: 
+      - main
+      - DEV
       
+permissions:
+  contents: read
 
 jobs:
   build-and-push:
@@ -13,7 +19,7 @@ jobs:
 
     steps:
     - name: Check out code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3   
 
     - name: Login to Docker Hub
       uses: docker/login-action@v1
@@ -28,5 +34,6 @@ jobs:
         file: Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/travelxptoday:latest 
+
 
 

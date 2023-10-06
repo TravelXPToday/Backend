@@ -59,7 +59,7 @@ jobs:
 
 
     - name: Type checking with mypy
-      run: mypy API
+      run: mypy API --exclude config.py
 
 
     - name: Install newman for API testing

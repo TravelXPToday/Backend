@@ -26,6 +26,12 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3   
 
+    - name: Get PR Title
+      if: github.event_name == 'pull_request'
+      run: |
+        PR_TITLE=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.number }} | jq -r .title)
+        echo "PR_TITLE=$(echo "$PR_TITLE" | sed 's/[^a-zA-Z0-9-]/-/g')" >> $GITHUB_ENV  # Make the PR title Docker tag friendly
+
     - name: Login to Docker Hub
       uses: docker/login-action@v1 
       with:
@@ -39,7 +45,7 @@ jobs:
         context: .
         file: ${{ env.DOCKERFILE_PATH }}
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.event_name == 'pull_request' && github.event.number || github.ref_name }}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.event_name == 'pull_request' && env.PR_TITLE || github.ref_name }}
       
     - name: Print Image SHA
       run: echo "Docker Image SHA - ${{ steps.docker_build.outputs.digest }}"

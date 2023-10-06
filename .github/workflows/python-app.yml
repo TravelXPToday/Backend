@@ -64,3 +64,11 @@ jobs:
 
     #- name: Run API tests with newman
      # run: newman run API/tests/Travelxptoday.postman_collection.json
+    - name: Print Info
+      run: |
+        echo "TravelXPToday is a platform that brings friends together for shared adventures."
+        echo "Everyone can contribute to a journey, add experiences, photos, and memories, creating a collective travel diary."
+        echo "Explore the interactive dashboard to relive group adventures and earn unique badges as a team."
+        echo "The backend is powered by Flask, a lightweight and easy-to-use Python web application framework."
+        echo "Security and code quality are ensured with tools like a hidden config file and SonarCloud."
+        echo "To run the app locally, follow the instructions in the repository README."

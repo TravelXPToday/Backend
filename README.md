@@ -1,6 +1,23 @@
 <img src="https://flask.palletsprojects.com/en/2.3.x/_images/flask-horizontal.png" alt="Italian Trulli">
 
 # Back-end
+
+
+![GitHub Actions Workflow Status](https://github.com/TravelXPToday/Backend/workflows/Python%20application/badge.svg)
+![GitHub Actions Workflow Status](https://github.com/TravelXPToday/Backend/workflows/Build%20and%20Push%20to%20Docker%20Hub/badge.svg)
+
+
+![Python Version](https://img.shields.io/badge/python-3.8-blue.svg)
+![Code Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)
+![GitHub last commit](https://img.shields.io/github/last-commit/TravelXPToday/Backend)
+![GitHub repo size](https://img.shields.io/github/repo-size/TravelXPToday/Backend)
+![GitHub top language](https://img.shields.io/github/languages/top/TravelXPToday/Backend)
+![GitHub language count](https://img.shields.io/github/languages/count/TravelXPToday/Backend)
+![GitHub contributors](https://img.shields.io/github/contributors/TravelXPToday/Backend)
+![GitHub open issues](https://img.shields.io/github/issues-raw/TravelXPToday/Backend)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/TravelXPToday/Backend)
+
+
 ### Flask
 Why whe chose Flask:
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/) is a lightweight WSGI web application framework. It is designed to make getting started quick and easy, with the ability to scale up to complex applications.

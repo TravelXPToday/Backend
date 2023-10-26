@@ -5,10 +5,7 @@ on:
     branches:
       - main
       - DEV
-  pull_request:
-    branches: 
-      - main
-      - DEV
+
 
 env:
   IMAGE_NAME: travelxptoday

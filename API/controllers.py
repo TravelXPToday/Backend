@@ -1,5 +1,8 @@
 from traveler import Traveler
 from journey import Journey
+# def get_users():
+#     traveler = Traveler()
+#     return traveler.read()
 
 def get_all_travelers():
     traveler = Traveler()
@@ -36,4 +39,5 @@ def delete_journey(criteria):
 def read_journey_by_id(id):
     journey = Journey()
     return journey.readById(id)
-#Jippie
+
+

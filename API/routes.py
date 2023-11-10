@@ -63,3 +63,10 @@ def remove_traveler():
     criteria = request.args.to_dict()  
     delete_traveler(criteria)
     return jsonify({"message": "Traveler deleted successfully!"})
+
+# @bp.route('/get-users', methods=['GET'])
+# def get_users():
+#     url = 'https://dev-ie13exvycq67h1fb/api/v2/users'
+#     headers = {'Authorization': 'Bearer YOUR-MANAGEMENT-API-TOKEN'}
+#     get_users(url, headers)
+#     return jsonify(response.json())

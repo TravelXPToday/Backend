@@ -42,7 +42,7 @@ To run the Flask app, run the following commands in the terminal:
 ```bash
 cd API
 pip install -r requirements.txt
-python app.py
+python api.py
 ```
 ---
 # File Structure:
@@ -165,6 +165,7 @@ classDiagram
 
     Journey --|> DataAccess
 ```
+
 This is a Diagram of our application it is prone to change in the future.
 
 ## api.py
@@ -186,6 +187,7 @@ if __name__ == "__main__":
 
 
 ```
+
 Here we set up the server and register the routes. 
 ## controller.py
 
@@ -309,9 +311,23 @@ class DataAccess:
         client = MongoClient(config.CONN, tlsAllowInvalidCertificates=True)
         db = client['Travelers']
         self.collection = db[collection_name]
-
+    # this is the outsourced code
     def create(self, data):
-        return self.collection.insert_one(data)
+        if 'traveler' in str(self):
+            required_fields = ['Email', 'Username']
+        elif 'journey' in str(self):
+            required_fields = ['name', 'start_time', 'end_time', 'start_location', 'destination', 'mode_of_transport']
+        else:
+            required_fields = []
+
+        if all(field in data for field in required_fields):
+            return self.collection.insert_one(data)
+        else:
+            missing_fields = [field for field in required_fields if field not in data]
+            log_message = f"Validation failed for data: {missing_fields}"
+            logging.error(log_message)
+            raise ValueError("Missing required information.")
+    # until here
 
     def read(self, criteria={}):
         return list(self.collection.find(criteria, {'_id': 0}))
@@ -498,8 +514,3 @@ class TestControllers(unittest.TestCase):
         logger.debug(f"Criteria: {criteria}")
         logger.debug(f"Result: {result}")
 ```
-
-
-
-
-
